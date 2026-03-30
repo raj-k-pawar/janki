@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 // ⚠️ IMPORTANT: Deploy api.php to your InfinityFree hosting and update this URL
-const String BASE_URL = 'https://yourdomain.infinityfreeapp.com/api.php';
+const String BASE_URL = 'https://janki.infinityfree.me/newapi.php';
 
 class ApiService {
   static final ApiService _instance = ApiService._internal();
