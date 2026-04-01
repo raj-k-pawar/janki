@@ -2,6 +2,7 @@ workflows:
   android-release:
     name: Janki Agro Tourism - Android APK
     max_build_duration: 30
+    instance_type: linux_x2
     environment:
       flutter: stable
       java: 17
@@ -9,16 +10,20 @@ workflows:
         - janki_keystore
       vars:
         PACKAGE_NAME: "com.jankiagro.tourism"
+
     scripts:
       - name: Get Flutter packages
-        script: flutter pub get
+        script: flutter packages pub get
+
       - name: Build release APK
         script: |
           flutter build apk --release \
             --build-name=1.0.0 \
             --build-number=$BUILD_NUMBER
+
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
+
     publishing:
       email:
         recipients:
