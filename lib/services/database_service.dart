@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http;
 
 class DatabaseService {
   // TODO: Replace with your actual InfinityFree domain
-  static const String BASE_URL = 'https://yourdomain.infinityfreeapp.com/api';
+  static const String BASE_URL = 'http://janki.infinityfree.me/api';
 
   static final DatabaseService _instance = DatabaseService._internal();
   factory DatabaseService() => _instance;
