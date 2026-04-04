@@ -463,7 +463,7 @@ class _QrConfirmScreen extends StatelessWidget {
           onPressed: () => Navigator.of(context).popUntil((r)=>r.isFirst),
         ),
       ),
-      body: SingleChildScrollView(padding:const EdgeInsets.all(20), children:[
+      body: SingleChildScrollView(padding:const EdgeInsets.all(20), child:Column(children:[
         Container(
           padding:const EdgeInsets.all(16),
           decoration:BoxDecoration(
