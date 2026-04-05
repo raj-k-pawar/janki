@@ -199,13 +199,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
     child: Text(t, style: GoogleFonts.poppins(fontSize: 12,
         fontWeight: FontWeight.w600, color: AppColors.textDark)));
 
-  Widget _tf(TextEditingController c, String label, IconData icon,
-      {TextInputType? type, String? Function(String?)? validator}) =>
-    TextFormField(controller: c, keyboardType: type,
-      decoration: InputDecoration(labelText: label,
-          prefixIcon: Icon(icon, color: AppColors.primary, size: 20)),
-      validator: validator ?? (v) =>
-          (v == null || v.trim().isEmpty) ? 'Required' : null);
+  Widget _tf(
+  TextEditingController c,
+  String label,
+  IconData icon, {
+  TextInputType? type,
+  String? Function(String?)? validator,
+  bool req = false, // ✅ ADD THIS
+}) {
+  return TextFormField(
+    controller: c,
+    keyboardType: type,
+    decoration: InputDecoration(
+      labelText: label,
+      prefixIcon: Icon(icon, color: AppColors.primary, size: 20),
+    ),
+    validator: validator ??
+        (v) {
+          if (req && (v == null || v.trim().isEmpty)) {
+            return 'Required';
+          }
+          return null;
+        },
+  );
+}
 
   String _roleName(UserRole r) {
     switch (r) {
