@@ -295,13 +295,15 @@ class _ScanQrTabState extends State<_ScanQrTab> with WidgetsBindingObserver {
     for (final c in updatedList) {
       if (c.id == customer.id) { updated = c; break; }
     }
-    setState(() {
-      _resultMsg      = 'Valid QR! Customer marked as SERVED.';
-      _resultColor    = AppColors.success;
-      _resultIcon     = Icons.check_circle_outline;
-      _resultCustomer = updated ?? customer.copyWith(canteenServed: true);
-      _processing     = false;
-    });
+    final safeCustomer = customer!; // we already validated it's not null
+
+setState(() {
+  _resultMsg      = 'Valid QR! Customer marked as SERVED.';
+  _resultColor    = AppColors.success;
+  _resultIcon     = Icons.check_circle_outline;
+  _resultCustomer = updated ?? safeCustomer.copyWith(canteenServed: true);
+  _processing     = false;
+});
   }
 
   @override
